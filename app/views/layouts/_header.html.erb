@@ -1,0 +1,11 @@
+<%= link_to 'Nos recettes', '#' %>
+<%= link_to 'Melangez', '#' %>
+<%= link_to 'Evenements', '#' %>
+<%= link_to 'Journal', '#' %>
+
+<% if current_user %>
+	<%= link_to 'Logout', logout_path, method: :delete %>
+<% else %>
+	<%= link_to 'Login', my_account_path %>
+<% end %>
+

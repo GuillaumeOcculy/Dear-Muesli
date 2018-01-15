@@ -1,0 +1,31 @@
+<h1>Mon compte</h1>
+
+<h2>Connexion</h2>
+
+<%= form_tag login_path do %>
+	<%= label_tag 'Adresse email' %>
+	<%= email_field_tag :email %>
+	<br>
+	<%= label_tag 'Password' %>
+	<%= password_field_tag :password %>
+	<br>
+	<%= check_box_tag :remember_me %>
+	<%= label_tag 'Se souvenir de moi' %>
+	<br>
+	<%= submit_tag 'Connexion' %>
+<% end %>
+
+<%= link_to 'Mot de passe oublié ?', '#' %>
+
+<h2>S'enregistrer</h2>
+
+<%= form_for @user, url: users_path do |f| %>
+	<%= f.label :email %>
+	<%= f.email_field :email %>
+	<br>
+	<%= f.label :password %>
+	<%= f.password_field :password %>
+	<br>
+	<%= f.submit "S'enregistrer" %>
+<% end  %>
+
