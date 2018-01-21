@@ -1,11 +1,18 @@
-<%= link_to 'Nos recettes', '#' %>
-<%= link_to 'Melangez', '#' %>
-<%= link_to 'Evenements', '#' %>
-<%= link_to 'Journal', '#' %>
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container text-center">
+		<%= link_to 'Nos recettes', '#' %>
+		<%= link_to 'Melangez', '#' %>
+		<%= link_to 'Evenements', '#' %>
+		<%= link_to 'Journal', '#' %>
+		<% if current_user %>
+			<%= link_to 'Mon compte', user_path(current_user) %>
+		<% else %>
+			<%= link_to 'Login', my_account_path %>
+		<% end %>
+  </div>
+</nav>
 
-<% if current_user %>
-	<%= link_to 'Logout', logout_path, method: :delete %>
-<% else %>
-	<%= link_to 'Login', my_account_path %>
-<% end %>
+
+
+
 
