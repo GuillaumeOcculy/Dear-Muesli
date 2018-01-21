@@ -1,0 +1,21 @@
+<div class='container'>
+	<h1 class='text-center'>Mot de passe perdu</h1>
+
+	<p>Entrez un nouveau mot de passe ci-dessous.</p>
+
+	<div class="row">
+		<%= form_for @user, url: password_reset_path(params[:id]) do |f| %>
+  		<div class="col-md-6">
+				<%= f.label :password %>
+				<%= f.password_field :password, class: 'form-control' %>
+				<br>
+				<%= f.submit 'Sauvegarder', class: 'form-control' %>
+  		</div>
+
+	  	<div class="col-md-6">
+				<%= f.label :password_confirmation %>
+				<%= f.password_field :password_confirmation, class: 'form-control' %>
+	  	</div>
+  	<% end %>
+	</div>
+</div>

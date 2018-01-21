@@ -3,9 +3,15 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
+  post :login, to: 'sessions#create'
+  delete :logout, to: 'sessions#destroy'
+
   get :my_account, to: 'pages#my_account', path: 'mon-compte'
 
   resources :users
-  post :login, to: 'sessions#create'
-  delete :logout, to: 'sessions#destroy'
+  resources :password_resets, only: [:new, :create, :edit, :update] do
+  	collection do
+  		get :success
+  	end
+  end
 end

@@ -13,7 +13,7 @@
 				<%= password_field_tag :password, nil, class: 'form-control' %>
 				<br>
 				<%= submit_tag 'Connexion', class: 'form-control' %>
-				<%= link_to 'Mot de passe oublié ?', '#' %>
+				<%= link_to 'Mot de passe oublié ?', new_password_reset_path %>
 				<br>
 				<%= check_box_tag :remember_me %>
 				<%= label_tag :remember_me, 'Se souvenir de moi' %>
