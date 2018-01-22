@@ -1,0 +1,26 @@
+<div class='container'>
+	<h1 class='text-center'>Recipes#index</h1>
+
+	<%= link_to 'Ajouter des recettes', new_admin_recipe_path %>
+
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">Name</th>
+	      <th scope="col">Quantity</th>
+	      <th scope="col">Action</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  	<% @recipes.each do |recipe| %>
+		  	<tr>
+		      <th scope="row"><%= recipe.id %></th>
+		      <td><%= recipe.name %></td>
+		      <td><%= recipe.quantity %></td>
+		      <td><%= link_to 'Edit', edit_admin_recipe_path(recipe) %></td>
+		    </tr>
+	  	<% end %>
+	  </tbody>
+	</table>	
+</div>

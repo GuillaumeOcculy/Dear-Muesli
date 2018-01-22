@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   namespace :admin do
     get :dashboard, to: 'admin#dashboard'
     resources :users
+    resources :recipes
   end
 end
