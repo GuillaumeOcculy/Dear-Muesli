@@ -7,6 +7,7 @@
 	  <thead>
 	    <tr>
 	      <th scope="col">#</th>
+	      <th scope="col">Picture</th>
 	      <th scope="col">Name</th>
 	      <th scope="col">Quantity</th>
 	      <th scope="col">Action</th>
@@ -16,6 +17,7 @@
 	  	<% @recipes.each do |recipe| %>
 		  	<tr>
 		      <th scope="row"><%= recipe.id %></th>
+		      <td><%= image_tag recipe.picture.url(:thumb) %></td>
 		      <td><%= recipe.name %></td>
 		      <td><%= recipe.quantity %></td>
 		      <td><%= link_to 'Edit', edit_admin_recipe_path(recipe) %></td>

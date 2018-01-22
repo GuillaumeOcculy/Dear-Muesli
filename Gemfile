@@ -13,6 +13,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks', '~> 5'
 gem 'bcrypt', '~> 3.1.7'
 
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+
 # Frontend
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.7'
