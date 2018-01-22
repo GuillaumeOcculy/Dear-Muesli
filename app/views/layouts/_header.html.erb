@@ -6,13 +6,9 @@
 		<%= link_to 'Journal', '#' %>
 		<% if current_user %>
 			<%= link_to 'Mon compte', user_path(current_user) %>
+			<%= link_to 'Admin', admin_dashboard_path %>
 		<% else %>
 			<%= link_to 'Login', my_account_path %>
 		<% end %>
   </div>
 </nav>
-
-
-
-
-

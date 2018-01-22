@@ -14,4 +14,9 @@ Rails.application.routes.draw do
   		get :success
   	end
   end
+
+  namespace :admin do
+    get :dashboard, to: 'admin#dashboard'
+    resources :users
+  end
 end
