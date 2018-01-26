@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
-  post :login, to: 'sessions#create'
-  delete :logout, to: 'sessions#destroy'
+  post    :login,  to: 'sessions#create'
+  delete  :logout, to: 'sessions#destroy'
 
   get :my_account, to: 'pages#my_account', path: 'mon-compte'
 
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get :dashboard, to: 'admin#dashboard'
     resources :users
+    resources :products
     resources :recipes
   end
 end

@@ -1,0 +1,28 @@
+<div class='container'>
+	<h1 class='text-center'>Products#index</h1>
+
+	<%= link_to 'Ajouter des produits', new_admin_product_path %>
+
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">Name</th>
+	      <th scope="col">Description</th>
+	      <th scope="col">Price</th>
+	      <th scope="col">Action</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  	<% @products.each do |product| %>
+		  	<tr>
+		      <th scope="row"><%= product.id %></th>
+		      <td><%= product.name %></td>
+		      <td><%= product.description %></td>
+		      <td><%= product.price %></td>
+		      <td><%= link_to 'Edit', edit_admin_product_path(product) %></td>
+		    </tr>
+	  	<% end %>
+	  </tbody>
+	</table>	
+</div>
