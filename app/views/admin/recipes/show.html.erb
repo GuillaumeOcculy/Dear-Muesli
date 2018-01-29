@@ -1,0 +1,30 @@
+<%= link_to 'Back', :back %>
+
+<div class='container text-center'>
+  <h1 class='text-center'><%= @recipe.name %></h1>  
+
+    <%= image_tag @recipe.picture.url(:medium) %>
+    <p>Quantity: <%= @recipe.quantity %></p>
+    
+    <h2>Produits</h2>
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <th scope="row"><%= link_to product.id, admin_product_path(product) %></th>
+          <td><%= link_to product.name, admin_product_path(product) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>  
+
+
+</div>
+
+</div>

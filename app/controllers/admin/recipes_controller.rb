@@ -6,6 +6,10 @@ module Admin
 			@recipes = Recipe.all
 		end
 
+		def show
+			@products = @recipe.products
+		end
+
 		def new
 			@recipe = Recipe.new
 		end

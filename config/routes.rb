@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root 'pages#home'
+  root 'products#index'
 
   post    :login,  to: 'sessions#create'
   delete  :logout, to: 'sessions#destroy'
@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get :my_account, to: 'pages#my_account', path: 'mon-compte'
 
   resources :users
+  resources :products, only: [:index, :show]
   resources :password_resets, only: [:new, :create, :edit, :update] do
   	collection do
   		get :success

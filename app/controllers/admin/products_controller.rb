@@ -6,6 +6,10 @@ module Admin
       @products = Product.all
     end
 
+    def show
+      @recipes = @product.recipes
+    end
+
     def new
       @product = Product.new
     end
@@ -36,7 +40,7 @@ module Admin
 
     private
     def product_params
-      params.require(:product).permit(:name, :description, :price)
+      params.require(:product).permit(:name, :description, :price, recipe_ids: [])
     end
 
     def find_product

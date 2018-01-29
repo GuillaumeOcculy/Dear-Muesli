@@ -13,6 +13,25 @@
 	  		<%= f.label :description %>
 	  		<%= f.text_area :description, class: 'form-control' %><br>
 
+	  			<table class="table">
+					  <thead>
+					    <tr>
+					      <th scope="col"></th>
+					      <th scope="col">Name</th>
+					      <th scope="col">Image</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  	<%= f.collection_check_boxes :recipe_ids, Recipe.all, :id, :name do |recipe_form| %>
+						  	<tr>
+						      <th><%= recipe_form.check_box  %></th>
+						      <td><%= recipe_form.label %></td>
+						      <td><%= image_tag recipe_form.object.picture.url(:thumb) %></td>
+						    </tr>
+					  	<% end %>
+					  </tbody>
+					</table>
+
 	  		<%= f.submit 'Ajouter', class: 'form-control' %>
 	  	<% end %>
 	  </div>

@@ -10,6 +10,7 @@
 	      <th scope="col">Name</th>
 	      <th scope="col">Description</th>
 	      <th scope="col">Price</th>
+	      <th scope="col">Recipes</th>
 	      <th scope="col">Action</th>
 	    </tr>
 	  </thead>
@@ -17,9 +18,10 @@
 	  	<% @products.each do |product| %>
 		  	<tr>
 		      <th scope="row"><%= product.id %></th>
-		      <td><%= product.name %></td>
+		      <td><%= link_to product.name, admin_product_path(product) %></td>
 		      <td><%= product.description %></td>
 		      <td><%= product.price %></td>
+		      <td><%= product.recipes.count %></td>
 		      <td><%= link_to 'Edit', edit_admin_product_path(product) %></td>
 		    </tr>
 	  	<% end %>
