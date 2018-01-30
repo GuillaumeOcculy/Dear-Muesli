@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  
   def index
     @products = Product.joins(:recipes).uniq
   end

@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get :my_account, to: 'pages#my_account', path: 'mon-compte'
 
   resources :users
-  resources :products, only: [:index, :show]
+  resources :products,  only: [:index, :show]
+  resources :carts,     only: [:show, :create, :destroy]
   resources :password_resets, only: [:new, :create, :edit, :update] do
   	collection do
   		get :success

@@ -1,6 +1,6 @@
 class Recipe < ApplicationRecord
-
-  has_many :recipezations
+  # Associations
+  has_many :recipezations, dependent: :destroy
   has_many :products, through: :recipezations
 	validates :name, presence: true, uniqueness: true
 	validates :quantity, presence: true

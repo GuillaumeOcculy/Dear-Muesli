@@ -4,11 +4,13 @@
       <h1><%= @product.name %></h1>
       <h2>Recette <%= @recipes.pluck(:name).to_sentence %></h2>
 
-      <h3 id='price'><%= @product.price %>&euro;</h3>
-
-      
-
-      <%= link_to 'Ajouter au panier', '#', class: 'btn btn-large btn-primary' %>
+      <%= form_tag carts_path do %>
+        <h3><p>Quantité par boite</p><span id='quantity'>1</span></h3>
+        <h3><%= @product.price %>&euro;</h3>
+        <%= hidden_field_tag :quantity, 1 %>
+        <%= hidden_field_tag :product_id, @product.id %>
+        <%= submit_tag 'Ajouter au panier', class: 'btn btn-primary' %>
+      <% end %>
     </div>
 
     <div class="col-xs-6">
@@ -26,9 +28,6 @@
             <% @recipes.each_with_index do |recipe, index| %>
               <div class="item <%= index == 0 ? 'active' : '' %>">
                 <%= image_tag recipe.picture.url(:large) %>
-                <!-- <div class="carousel-caption">
-                  <p><%#= recipe.name %></p>
-                </div> -->
               </div>
             <% end %>
           </div>

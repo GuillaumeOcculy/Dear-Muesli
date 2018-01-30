@@ -3,6 +3,10 @@ class User < ApplicationRecord
 
 	before_create { generate_token(:auth_token) }
 
+	# Associations
+	has_many :orders
+	
+	# Validations
 	validates :email, 		presence: true, uniqueness: true
 	validates :password, 	presence: true
 	validates_confirmation_of	:password
