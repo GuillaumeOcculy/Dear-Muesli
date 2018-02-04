@@ -10,7 +10,10 @@ Rails.application.routes.draw do
 
   resources :users
   resources :products,  only: [:index, :show]
-  resources :carts,     only: [:show, :create, :destroy]
+  resources :carts,     only: [:show, :create] do 
+    resources :products, only: [:destroy]
+  end
+
   resources :password_resets, only: [:new, :create, :edit, :update] do
   	collection do
   		get :success

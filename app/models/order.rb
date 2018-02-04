@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
   # Associations
-  belongs_to :user
+  belongs_to :user, required: false
   has_many :order_items
 
   def place!

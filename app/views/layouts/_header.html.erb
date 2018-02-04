@@ -7,9 +7,13 @@
 		<% if current_user %>
 			<%= link_to 'Mon compte', user_path(current_user) %>
 			<%= link_to 'Admin', admin_dashboard_path %>
-			<%= link_to "Panier(#{current_order.order_items.count})", '#' %>
 		<% else %>
 			<%= link_to 'Login', my_account_path %>
+		<% end %>
+		<% if current_order %>
+			<%= link_to "Panier(#{current_order.order_items.count})", cart_path(current_order) %>
+		<% else %>
+			Panier (0)
 		<% end %>
   </div>
 </nav>
