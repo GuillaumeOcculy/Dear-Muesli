@@ -1,0 +1,15 @@
+<h1 class='text-center'>Adresses</h1>
+
+<h2>Mes adresses</h2>
+<p>Les adresses suivantes seront utilisées par defaut sur la page de commande.</p>
+
+<div class="row">
+  <div class="col-xs-6">
+    <h2>Adresse de Facturation</h2>
+    <%= @user.has_billing_address? ? link_to('Modifier', edit_user_address_path(@user, @billing_address)) : link_to('Ajouter', new_user_address_path(@user)) %>
+  </div>
+  <div class="col-xs-6">
+    <h2>Adresse de Livraison</h2>
+    <%= @user.has_delivery_address? ? link_to('Modifier', edit_user_address_path(@user, @delivery_address)) : link_to('Ajouter', new_user_address_path(@user, delivery: true)) %>
+  </div>
+</div>

@@ -1,7 +1,22 @@
+# == Schema Information
+#
+# Table name: orders
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  status     :string           default("in_progress")
+#  subtotal   :decimal(, )
+#  shipping   :decimal(, )
+#  total      :decimal(, )
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Order < ApplicationRecord
   # Associations
   belongs_to :user, required: false
   has_many :order_items
+  has_many :addresses, as: :addressable, dependent: :destroy
 
   def place!
     update(status: 'placed')
