@@ -13,6 +13,10 @@ class CartsController < ApplicationController
     end
   end
 
+  def finalize
+    current_order
+  end
+
   private
   def current_order
     if cookies.permanent[:order_id]

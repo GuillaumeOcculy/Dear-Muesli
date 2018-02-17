@@ -1,6 +1,7 @@
 <div class='container'>
   <h1 class='text-center'>Panier</h1>
 
+  <h2><%= cart_delivery_title %></h2>
   <table class="table">
     <thead>
       <tr>
@@ -28,9 +29,11 @@
         <td></td>
         <td></td>
         <td></td>
-        <td>Livraison TNT: 6.2</td>
-        <td>TOTAL: <%= current_order.order_items.sum(:total_price) + 6.2 %></td>  
+        <td>Livraison TNT: <%= current_order.delivery_cost %></td>
+        <td>TOTAL: <%= current_order.total_price %></td>  
       </tr>
     </tbody>
-  </table>  
+  </table> 
+
+  <%= link_to 'Proceder a la commande', finalize_path, class: 'btn btn-success right' %> 
 </div>

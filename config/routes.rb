@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete  :logout, to: 'sessions#destroy'
 
   get :my_account, to: 'pages#my_account', path: 'mon-compte'
+  get :finalize,   to: 'carts#finalize', path: 'finaliser-ma-commande'
 
   resources :users
   resources :products,  only: [:index, :show]
