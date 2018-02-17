@@ -8,10 +8,13 @@ Rails.application.routes.draw do
 
   get :my_account, to: 'pages#my_account', path: 'mon-compte'
   get :finalize,   to: 'carts#finalize', path: 'finaliser-ma-commande'
+  put :checkout,   to: 'carts#checkout', path: 'checkout-ma-commande'
 
   resources :users do
     resources :addresses, controller: 'users/addresses'
   end
+
+  resources :orders
   resources :products,  only: [:index, :show]
   resources :carts,     only: [:show, :create] do 
     resources :products, only: [:destroy]

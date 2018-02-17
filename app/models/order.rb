@@ -17,6 +17,7 @@ class Order < ApplicationRecord
   belongs_to :user, required: false
   has_many :order_items
   has_many :addresses, as: :addressable, dependent: :destroy
+  accepts_nested_attributes_for :addresses
 
   def place!
     update(status: 'placed')
@@ -31,14 +32,14 @@ class Order < ApplicationRecord
   end
 
   def total_price
-    item_price + delivery_cost
+    total_item_price + delivery_cost
   end
 
   def free_delivery?
-    item_price >= 35
+    total_item_price >= 35
   end
 
-  def item_price
+  def total_item_price
     order_items.sum(:total_price)
   end
 

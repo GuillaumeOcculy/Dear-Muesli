@@ -2,7 +2,56 @@
   <h1 class='text-center'>Finaliser ma commande</h1>
 
   <div class="row">
-    <div class="col-md-6">.col-md-6</div>
+    <div class="col-md-6">
+
+      <%= form_for current_order, url: checkout_path, method: :put do |f| %>
+        <h2>Details de facturation</h2>
+        <%= f.fields_for :addresses, current_order.addresses.build do |address_form| %>
+        <div class="row">
+          <div class="col-xs-6">
+            <%= address_form.label :first_name, 'Prenom' %>
+            <%= address_form.text_field :first_name, value: current_user&.first_name, class: 'form-control' %>
+          </div>
+          <div class="col-xs-6">
+            <%= address_form.label :last_name, 'Nom' %>
+            <%= address_form.text_field :last_name, value: current_user&.last_name, class: 'form-control' %>
+          </div>
+        </div>
+
+        <%= address_form.hidden_field :category, value: 'delivery' if params[:delivery] %>
+
+        <%= address_form.label :entreprise_name, 'Nom de l\'entreprise' %>
+        <%= address_form.text_field :entreprise_name, class: 'form-control' %>
+
+        <%= address_form.label :country, 'Pays' %>
+        <%= address_form.text_field :country, class: 'form-control', disabled: true %>
+
+        <%= address_form.label :street_name, 'Adresse' %>
+        <%= address_form.text_field :street_name, class: 'form-control' %><br>
+        <%= address_form.text_field :street_name_2, class: 'form-control' %>
+        <%= address_form.label :city, 'Ville' %>
+        <%= address_form.text_field :city, class: 'form-control' %>
+        <%= address_form.label :postal_code, 'Code postal' %>
+        <%= address_form.phone_field :postal_code, class: 'form-control' %>
+
+        <div class="row">
+          <div class="col-xs-6">
+            <%= address_form.label :phone, 'Telephone' %>
+            <%= address_form.phone_field :phone, class: 'form-control' %>
+          </div>
+          <div class="col-xs-6">
+            <%= address_form.label :email, 'Adresse email' %>
+            <%= address_form.email_field :email, value: current_user&.email, class: 'form-control' %>
+          </div>
+        </div>
+        <br>
+        <% end %>
+      <%= f.submit 'Sauvegarder l\Adresse', class: 'form-control' %>
+    <% end %>
+    </div>
+
+
+
     <div class="col-md-6">
       <h2>Votre commande</h2>
       <div class='jumbotron'>
@@ -21,7 +70,7 @@
               </tr>
               <tr>
                 <td>SOUS-TOTAL</td>
-                <td><%= current_order.item_price %>€</td>
+                <td><%= current_order.total_item_price %>€</td>
               </tr>
               <tr>
                 <td>EXPÉDITION</td>
