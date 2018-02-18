@@ -19,6 +19,12 @@ class Order < ApplicationRecord
   has_many :addresses, as: :addressable, dependent: :destroy
   accepts_nested_attributes_for :addresses
 
+  scope :in_progress, -> { where(status: 'in_progress') }
+  scope :paid, -> { where.not(status: 'in_progress') }
+  scope :placed, -> { where(status: 'placed') }
+  scope :shipped, -> { where(status: 'shipped') }
+  scope :canceled, -> { where(status: 'canceled') }
+
   def place!
     update(status: 'placed')
   end

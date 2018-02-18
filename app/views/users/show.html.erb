@@ -1,22 +1,39 @@
-<div class='container'>
-  <h1 class='text-center'>Mon compte</h1>
+<h1 class='text-center'>Mon compte</h1>
 
-  
+<p>Bonjour <%= "#{@user.name}" %>(vous n'etes pas <%= @user.name %> ? <%= link_to 'Deconnexion', logout_path, method: :delete %>). Depuis le tableau de bord de la section de mon compte, vous pouvez voir commandes recentes, gerer vos adresses de livraisons et de facturation et <%= link_to 'éditer vos détails et votre mot de passe', '#' %>.</p>
+<ul>
+  <li><%= link_to 'Tableau de bord', '#' %></li>
+  <li><%= link_to 'Abonnements', '#' %></li>
+  <li><%= link_to 'Adresses', user_addresses_path(@user) %></li>
+  <li><%= link_to 'Details du compte', '#' %></li>
+  <li><%= link_to 'Commandes', '#' %></li>
+  <li><%= link_to 'Telechargements', '#' %></li>
+  <li><%= link_to 'Moyens de paiement', '#' %></li>
+  <li><%= link_to 'Deconnexion', logout_path, method: :delete %></li>
+</ul>
 
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <p>Bonjour <%= "#{@user.name}" %>(vous n'etes pas <%= @user.name %> ? <%= link_to 'Deconnexion', logout_path, method: :delete %>). Depuis le tableau de bord de la section de mon compte, vous pouvez voir commandes recentes, gerer vos adresses de livraisons et de facturation et <%= link_to 'éditer vos détails et votre mot de passe', '#' %>.</p>
-      <ul>
-        <li><%= link_to 'Tableau de bord', '#' %></li>
-        <li><%= link_to 'Abonnements', '#' %></li>
-        <li><%= link_to 'Adresses', user_addresses_path(@user) %></li>
-        <li><%= link_to 'Details du compte', '#' %></li>
-        <li><%= link_to 'Commandes', '#' %></li>
-        <li><%= link_to 'Telechargements', '#' %></li>
-        <li><%= link_to 'Moyens de paiement', '#' %></li>
-        <li><%= link_to 'Deconnexion', logout_path, method: :delete %></li>
-      </ul>
-    </div>
-  </div>
-</div>
+<h2>Commandes récentes</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Commande</th>
+      <th scope="col">Date</th>
+      <th scope="col">Etat</th>
+      <th scope="col">Total</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.orders.paid.each do |order| %>
+      <tr>
+        <th>n°<%= order.id %></th>
+        <td><%= order.created_at.to_date %></td>
+        <td><%= order.status %></td>
+        <td><%= order.total_price %>€ pour <%= order.order_items.count %> articles</td>
+        <td><%= link_to 'Voir', order_path(order), class: 'btn btn-default btn-sm' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
