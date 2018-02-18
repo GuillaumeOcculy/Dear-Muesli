@@ -1,0 +1,30 @@
+<h2>Mes adresses</h2>
+<p>Les adresses suivantes seront utilisées par defaut sur la page de commande.</p>
+
+<div class="row">
+  <div class="col-xs-6">
+    <h2>Adresse de Facturation</h2>
+    <% if @user.has_billing_address? %>
+      <%= link_to('Modifier', edit_user_address_path(@user, @billing_address)) %>
+      <p><%= @billing_address.name %></p>
+      <p><%= @billing_address.street_name %></p>
+      <p><%= @billing_address.street_name_2 %></p>
+      <p><%= "#{@billing_address.postal_code} #{@billing_address.city}" %></p>
+    <% else %>
+      <%= link_to('Ajouter', new_user_address_path(@user)) %>
+    <% end %>
+  </div>
+  <div class="col-xs-6">
+    <h2>Adresse de Livraison</h2>
+    <% if @user.has_delivery_address? %>
+      <%= link_to('Modifier', edit_user_address_path(@user, @delivery_address)) %>
+      <p><%= @delivery_address.name %></p>
+      <p><%= @delivery_address.street_name %></p>
+      <p><%= @delivery_address.street_name_2 %></p>
+      <p><%= "#{@delivery_address.postal_code} #{@delivery_address.city}" %></p>
+    <% else %>
+      <%= link_to('Ajouter', new_user_address_path(@user, delivery: true)) %>
+    <% end %>
+  </div>
+</div>
+

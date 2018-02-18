@@ -13,27 +13,6 @@
 </ul>
 
 <h2>Commandes récentes</h2>
+<%= render partial: 'users/orders/orders' %>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Commande</th>
-      <th scope="col">Date</th>
-      <th scope="col">Etat</th>
-      <th scope="col">Total</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @user.orders.paid.each do |order| %>
-      <tr>
-        <th>n°<%= order.id %></th>
-        <td><%= order.created_at.to_date %></td>
-        <td><%= order.status %></td>
-        <td><%= order.total_price %>€ pour <%= order.order_items.count %> articles</td>
-        <td><%= link_to 'Voir', order_path(order), class: 'btn btn-default btn-sm' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<%= render partial: 'users/addresses/addresses' %>

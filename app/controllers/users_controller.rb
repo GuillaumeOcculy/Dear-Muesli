@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show]
   
   def show
+    @billing_address = @user.billing_address
+    @delivery_address = @user.delivery_address
   end
 
   def create

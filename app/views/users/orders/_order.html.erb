@@ -1,0 +1,7 @@
+<tr>
+  <th>n°<%= order.id %></th>
+  <td><%= order.created_at.to_date %></td>
+  <td><%= order.status %></td>
+  <td><%= order.total_price %>€ pour <%= order.order_items.count %> articles</td>
+  <td><%= link_to 'Voir', order_path(order), class: 'btn btn-default btn-sm' %></td>
+</tr>
