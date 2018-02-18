@@ -17,7 +17,8 @@
 
 class User < ApplicationRecord
 	has_secure_password
-
+	attr_accessor :actual_password
+	
 	before_create { generate_token(:auth_token) }
 
 	# Associations

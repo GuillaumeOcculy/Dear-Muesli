@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :addresses, controller: 'users/addresses'
+    resources :orders,    controller: 'users/orders'
   end
 
   resources :orders

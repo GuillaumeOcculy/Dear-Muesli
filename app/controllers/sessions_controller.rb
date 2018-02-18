@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
 			set_current_user(@user, params[:remember_me])
 			redirect_to @user
 		else
+			@user = User.new
 			render 'pages/my_account'
 		end
 	end

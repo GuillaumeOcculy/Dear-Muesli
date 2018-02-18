@@ -2,8 +2,8 @@
   <div class="col-md-6 col-md-offset-3">
     <%= link_to 'Tableau de bord', user_path(@user) %> | 
     <%= link_to 'Adresses', user_addresses_path(@user) %> | 
-    <%= link_to 'Details du compte', '#' %> | 
-    <%= link_to 'Commandes', '#' %> | 
+    <%= link_to 'Details du compte', edit_user_path(@user) %> | 
+    <%= link_to 'Commandes', user_orders_path(@user) %> | 
     <%= link_to 'Deconnexion', logout_path, method: :delete %>
   </div>
 </div>

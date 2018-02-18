@@ -1,0 +1,28 @@
+<%= form_for @user do |f| %>
+  <div class="row">
+    <div class="col-xs-6">
+      <%= f.label :first_name, 'Prenom' %>
+      <%= f.text_field :first_name, class: 'form-control' %>
+    </div>
+    <div class="col-xs-6">
+      <%= f.label :last_name, 'Nom' %>
+      <%= f.text_field :last_name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <%= f.label :email, 'Adresse email' %>
+  <%= f.text_field :email, class: 'form-control' %>
+
+  <p>Changement de mot de passe</p>
+  <%= f.label :actual_password, 'Mot de passe actuel (laisser vide pour le conserver)' %>
+  <%= f.text_field :actual_password, class: 'form-control' %>
+
+  <%= f.label :password, 'Nouveau mot de passe (laisser vide pour conserver l\'actuel)' %>
+  <%= f.text_field :password, class: 'form-control' %>
+
+  <%= f.label :password_confirmation, 'Confirmer le nouveau mot de passe' %>
+  <%= f.text_field :password_confirmation, class: 'form-control' %>
+
+  <br>
+  <%= f.submit 'Enregistrer les changements', class: 'form-control btn-primary' %>
+<% end %>
