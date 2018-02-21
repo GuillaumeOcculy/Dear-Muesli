@@ -18,8 +18,8 @@ class CartsController < ApplicationController
   end
 
   def checkout
-
-    if current_order.update(order_params.merge(status: 'placed',subtotal: current_order.total_item_price, shipping: current_order.delivery_cost, total: current_order.total_price))
+    cart_service = CartService.new(order: current_order, user: current_user, params: order_params)
+    if cart_service.checkout
       flash[:success] = "Panier checkouté"
       cookies.delete :order_id
       redirect_to root_path
@@ -35,6 +35,7 @@ class CartsController < ApplicationController
     else
       @current_order ||= Order.create
       cookies.permanent[:order_id] = @current_order.id
+      @current_order
     end
   end
 

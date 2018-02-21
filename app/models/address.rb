@@ -22,6 +22,8 @@
 #
 
 class Address < ApplicationRecord
+  attr_accessor :same_as_delivery
+  
   belongs_to :addressable, polymorphic: true
 
   scope :billings,   ->  { where(category: 'billing')  }

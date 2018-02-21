@@ -37,5 +37,10 @@
     </div>
   </div>
   <br>
+
+  <% unless params[:delivery] %>
+    <%= f.label :same_as_delivery, 'Meme adresse de livraison ?' %>
+    <%= f.check_box :same_as_delivery %>
+  <% end %>
   <%= f.submit 'Sauvegarder l\'Adresse', class: 'form-control' %>
 <% end %>

@@ -1,0 +1,114 @@
+<%= form_for current_order, url: checkout_path, method: :put do |f| %>
+  
+  <%= f.fields_for :addresses, current_order.addresses.build do |address_form| %>
+    <div id='billing_address'>
+      <h2>Details de facturation</h2>
+      <div class="row">
+        <div class="col-xs-6">
+          <%= address_form.label :first_name, 'Prenom' %>
+          <%= address_form.text_field :first_name, value: current_user&.first_name, class: 'form-control' %>
+        </div>
+        <div class="col-xs-6">
+          <%= address_form.label :last_name, 'Nom' %>
+          <%= address_form.text_field :last_name, value: current_user&.last_name, class: 'form-control' %>
+        </div>
+      </div>
+
+      <%= address_form.label :entreprise_name, 'Nom de l\'entreprise' %>
+      <%= address_form.text_field :entreprise_name, value: current_user&.billing_address.entreprise_name, class: 'form-control' %>
+
+      <%= address_form.label :country, 'Pays' %>
+      <%= address_form.text_field :country, value: current_user&.billing_address.country, class: 'form-control', disabled: true %>
+
+      <%= address_form.label :street_name, 'Adresse' %>
+      <%= address_form.text_field :street_name, value: current_user&.billing_address.street_name, class: 'form-control' %><br>
+      <%= address_form.text_field :street_name_2, value: current_user&.billing_address.street_name_2, class: 'form-control' %>
+      <%= address_form.label :city, 'Ville' %>
+      <%= address_form.text_field :city, value: current_user&.billing_address.city, class: 'form-control' %>
+      <%= address_form.label :postal_code, 'Code postal' %>
+      <%= address_form.phone_field :postal_code, value: current_user&.billing_address.postal_code, class: 'form-control' %>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <%= address_form.label :phone, 'Telephone' %>
+          <%= address_form.phone_field :phone, value: current_user&.billing_address.phone, class: 'form-control' %>
+        </div>
+        <div class="col-xs-6">
+          <%= address_form.label :email, 'Adresse email' %>
+          <%= address_form.email_field :email, value: current_user&.billing_address.email, class: 'form-control' %>
+        </div>
+      </div>
+      <br>
+    </div>
+    
+    <%= address_form.label :same_as_delivery, 'Meme adresse de livraison ?' %>
+    <%= address_form.check_box :same_as_delivery, checked: true %>
+
+
+    <div id='delivery_address'>
+      <h2>Details de livraison</h2>
+      <div class="row">
+        <div class="col-xs-6">
+          <%= address_form.label :first_name, 'Prenom' %>
+          <%= address_form.text_field :first_name, value: current_user&.first_name, class: 'form-control' %>
+        </div>
+        <div class="col-xs-6">
+          <%= address_form.label :last_name, 'Nom' %>
+          <%= address_form.text_field :last_name, value: current_user&.last_name, class: 'form-control' %>
+        </div>
+      </div>
+
+      <%= address_form.hidden_field :category, value: 'delivery' %>
+
+      <%= address_form.label :entreprise_name, 'Nom de l\'entreprise' %>
+      <%= address_form.text_field :entreprise_name, value: current_user&.billing_address.entreprise_name, class: 'form-control' %>
+
+      <%= address_form.label :country, 'Pays' %>
+      <%= address_form.text_field :country, value: current_user&.billing_address.country, class: 'form-control', disabled: true %>
+
+      <%= address_form.label :street_name, 'Adresse' %>
+      <%= address_form.text_field :street_name, value: current_user&.billing_address.street_name, class: 'form-control' %><br>
+      <%= address_form.text_field :street_name_2, value: current_user&.billing_address.street_name_2, class: 'form-control' %>
+      <%= address_form.label :city, 'Ville' %>
+      <%= address_form.text_field :city, value: current_user&.billing_address.city, class: 'form-control' %>
+      <%= address_form.label :postal_code, 'Code postal' %>
+      <%= address_form.phone_field :postal_code, value: current_user&.billing_address.postal_code, class: 'form-control' %>
+
+      <div class="row">
+        <div class="col-xs-6">
+          <%= address_form.label :phone, 'Telephone' %>
+          <%= address_form.phone_field :phone, value: current_user&.billing_address.phone, class: 'form-control' %>
+        </div>
+        <div class="col-xs-6">
+          <%= address_form.label :email, 'Adresse email' %>
+          <%= address_form.email_field :email, value: current_user&.billing_address.email, class: 'form-control' %>
+        </div>
+      </div>
+      <br>
+    </div>
+
+  <% end %>
+  <%= f.submit 'Sauvegarder l\'Adresse', class: 'form-control', id: 'save_address_submit' %>
+<% end %>
+
+<script type="text/javascript">
+  if($('#order_addresses_attributes_0_same_as_delivery:checkbox:checked').length > 0){
+    $('#delivery_address').hide();  
+  }else{
+    $('#delivery_address').show();  
+  }
+
+  $('#order_addresses_attributes_0_same_as_delivery').change(function(){
+    if(this.checked){
+      $('#delivery_address').hide('slow');
+    }else{
+      $('#delivery_address').show('slow');
+    }
+  })
+
+  $('#save_address_submit').click(function(e){
+    if($('#order_addresses_attributes_0_same_as_delivery:checkbox:checked').length > 0){
+      $('#delivery_address').remove();  
+    }
+  });
+</script>

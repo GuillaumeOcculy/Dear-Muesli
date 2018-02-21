@@ -18,4 +18,17 @@ class CartService
     true
   end
 
+  def checkout
+    if @order.update(@params.merge(status: 'placed', subtotal: @order.total_item_price, shipping: @order.delivery_cost, total: @order.total_price))
+      if @params[:addresses_attributes]['0'][:same_as_delivery] == '1'
+        delivery_address = @order.addresses.first.dup
+        delivery_address.category = 'delivery'
+        delivery_address.save
+      end
+      true
+    else
+      false
+    end
+  end
+
 end

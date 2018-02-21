@@ -15,6 +15,7 @@ module Users
     def create
       @address = @user.addresses.build(address_params)
       if @address.save
+        create_delivery_address
         flash[:success] = 'Addresse ajoutée'
         redirect_to user_addresses_path(@user)
       else
@@ -47,6 +48,10 @@ module Users
 
     def address_params
       params.require(:address).permit!
+    end
+
+    def create_delivery_address
+      @user.addresses.create(address_params.merge(category: 'delivery')) if address_params[:same_as_delivery] == '1'
     end
   end
 end
