@@ -24,7 +24,7 @@
           <tbody>
             <%= f.fields_for :recipezations do |recipezation_form| %>
               <tr>
-                <td><%= recipezation_form.object.product.name %></td>
+                <td><%= recipezation_form.object.recipe.name %></td>
                 <td><%= recipezation_form.number_field :quantity, value: recipezation_form.object.quantity %></td>
               </tr>
             <% end %>
