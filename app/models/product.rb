@@ -15,4 +15,6 @@ class Product < ApplicationRecord
   has_many :recipezations, dependent: :destroy
   has_many :recipes, through: :recipezations
   has_many :order_items
+
+  accepts_nested_attributes_for :recipezations
 end

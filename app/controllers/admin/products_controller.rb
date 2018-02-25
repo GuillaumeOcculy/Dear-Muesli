@@ -26,6 +26,7 @@ module Admin
     end
 
     def edit
+      @recipezations = @product.recipezations
     end
 
     def update
@@ -40,7 +41,7 @@ module Admin
 
     private
     def product_params
-      params.require(:product).permit(:name, :description, :price, recipe_ids: [])
+      params.require(:product).permit(:name, :description, :price, recipezations_attributes: ['id', 'quantity'], recipe_ids: [])
     end
 
     def find_product

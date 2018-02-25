@@ -1,20 +1,37 @@
 <div class='container'>
-	<h1 class='text-center'>Edit <%= @product.name %></h1>
+  <h1 class='text-center'>Edit <%= @product.name %></h1>
 
-	<div class="row">
-	  <div class="col-md-6 col-md-offset-3">
-	  	<%= form_for @product, url: admin_product_path(@product), method: :put, html: { multipart: true } do |f| %>
-	  		<%= f.label :name %>
-	  		<%= f.text_field :name, class: 'form-control' %><br>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for @product, url: admin_product_path(@product), method: :put, html: { multipart: true } do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %><br>
 
-	  		<%= f.label :price %>
-	  		<%= f.number_field :price, min: 0, class: 'form-control' %><br>
+        <%= f.label :price %>
+        <%= f.number_field :price, min: 0, class: 'form-control' %><br>
 
-	  		<%= f.label :description %>
-	  		<%= f.text_area :description, class: 'form-control' %><br>
+        <%= f.label :description %>
+        <%= f.text_area :description, class: 'form-control' %><br>
 
-	  		<%= f.submit 'Modifier', class: 'form-control' %>
-	  	<% end %>
-	  </div>
-	</div>
+        <h2>Recettes</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nom</th>
+              <th scope="col">Quantite</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= f.fields_for :recipezations do |recipezation_form| %>
+              <tr>
+                <td><%= recipezation_form.object.product.name %></td>
+                <td><%= recipezation_form.number_field :quantity, value: recipezation_form.object.quantity %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>  
+        <%= f.submit 'Modifier', class: 'form-control' %> 
+      <% end %>
+    </div>
+  </div>
 </div>
