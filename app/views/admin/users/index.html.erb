@@ -1,24 +1,24 @@
 <div class='container'>
-	<h1 class='text-center'>Users#index</h1>
+  <h1 class='text-center'>Users#index</h1>
 
-	<table class="table">
-	  <thead>
-	    <tr>
-	      <th scope="col">#</th>
-	      <th scope="col">First</th>
-	      <th scope="col">Last</th>
-	      <th scope="col">Email</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	  	<% @users.each do |user| %>
-		  	<tr>
-		      <th scope="row"><%= user.id %></th>
-		      <td><%= user.first_name %></td>
-		      <td><%= user.last_name %></td>
-		      <td><%= user.email %></td>
-		    </tr>
-	  	<% end %>
-	  </tbody>
-	</table>	
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <th scope="row"><%= user.id %></th>
+          <td><%= user.first_name %></td>
+          <td><%= user.last_name %></td>
+          <td><%= user.email %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>  
 </div>

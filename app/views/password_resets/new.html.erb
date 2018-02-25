@@ -1,12 +1,12 @@
 <h1 class='text-center'>Mot de passe perdu</h1>
 
 <div class='container'>
-	<p>Mot de passe perdu ? Veuillez saisir votre identifiant ou votre adresse email. Vous recevrez un lien par email pour créer un nouveau mot de passe.</p>
-	<%= form_tag password_resets_path do %>
-	
-	<%= label_tag :email, 'Identifiant ou email' %>
-	<%= email_field_tag :email, nil, class: 'form-control' %>
-	<br>
-	<%= submit_tag 'Réinitilisation du mot de passe', class: 'form-control' %>
-<% end %>	
+  <p>Mot de passe perdu ? Veuillez saisir votre identifiant ou votre adresse email. Vous recevrez un lien par email pour créer un nouveau mot de passe.</p>
+  <%= form_tag password_resets_path do %>
+  
+  <%= label_tag :email, 'Identifiant ou email' %>
+  <%= email_field_tag :email, nil, class: 'form-control' %>
+  <br>
+  <%= submit_tag 'Réinitilisation du mot de passe', class: 'form-control' %>
+<% end %> 
 </div>
