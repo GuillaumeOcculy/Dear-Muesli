@@ -41,7 +41,7 @@ module Admin
 
     private
     def product_params
-      params.require(:product).permit(:name, :description, :price, recipezations_attributes: ['id', 'quantity'], recipe_ids: [])
+      params.require(:product).permit(:name, :description, :price, recipezations_attributes: [:id, :quantity, :recipe_id, :_destroy])
     end
 
     def find_product

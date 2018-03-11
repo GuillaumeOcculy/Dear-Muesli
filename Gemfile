@@ -18,6 +18,7 @@ gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 # Frontend
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.3.7'
+gem "cocoon"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,0 +1,14 @@
+<div class='nested-fields'>
+  <div class='field'>
+    <%= f.label :name %>
+    <%= f.collection_select :recipe_id, Recipe.all, :id, :name, {prompt: true}, class: 'form-control' %>
+  </div>
+
+  <br>
+
+  <div class='field'>
+    <%= f.label :quantity %>
+    <%= f.number_field :quantity, class: 'form-control' %>    
+  </div>
+  <%= link_to_remove_association 'Remove recipe', f %>
+</div>

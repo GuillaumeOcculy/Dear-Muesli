@@ -16,5 +16,8 @@ class Product < ApplicationRecord
   has_many :recipes, through: :recipezations
   has_many :order_items
 
-  accepts_nested_attributes_for :recipezations
+  accepts_nested_attributes_for :recipezations, :recipes
+
+  # Validations
+  validates_presence_of :name, :description, :price
 end
